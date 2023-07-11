@@ -26,6 +26,6 @@ const columns = [
         key: 'owner',
     }
 ];
-const TableModule = ({dataSource}) => <Table columns={columns} dataSource={dataSource} />;
+const TableModule = ({dataSource, pagination = false}) => <Table columns={columns} dataSource={dataSource} pagination={false} />;
 
 export default TableModule;

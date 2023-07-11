@@ -2,7 +2,7 @@ import { Layout } from 'antd';
 import CategoryList from '../components/CategoryList';
 import Filter from '../components/Filter';
 import TableModule from '../components/TableModule';
-import Pagination from '../components/Pagination';
+import PaginationComponent from '../components/Pagination';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchApiList } from '../reducers/slice';
@@ -13,12 +13,15 @@ function APIListPage () {
     const dispatch = useDispatch();
     // Get data from store
     const apiList = useSelector(state => state.list);
+    const apiQuery = useSelector(state => state.queryStr);
+    const apiCurrentPage = useSelector(state => state.currentPage);
+    const apiCategory = useSelector(state => state.category);
+    const apiTotalItems = useSelector(state => state.totalItems);
     const apiStatus = useSelector(state => state.status);
-    const apiError = useSelector(state => state.error);
 
     useEffect(() => {
         if (apiStatus === 'idle') {
-            dispatch(fetchApiList());
+            dispatch(fetchApiList(apiCategory, apiQuery, apiCurrentPage));
         }
     }, [apiStatus, dispatch]);
 
@@ -36,7 +39,7 @@ function APIListPage () {
                         <TableModule dataSource={apiList} />
                     </div>
                     <div>
-                        <Pagination pageSize={5} total={5} />
+                        <PaginationComponent pageSize={3} currentPage={apiCurrentPage} total={apiTotalItems} />
                     </div>
                 </Content>
             </Layout>

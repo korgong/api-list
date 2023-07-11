@@ -1,9 +1,9 @@
 import React from 'react';
 import { Pagination } from 'antd';
 
-const PaginationComponent = ({ total, pageSize, onChange }) => (
+const PaginationComponent = ({ currentPage, total, pageSize, onChange }) => (
     <Pagination
-        defaultCurrent={1}
+        currentPage={currentPage}
         total={total}
         pageSize={pageSize}
         onChange={onChange}
