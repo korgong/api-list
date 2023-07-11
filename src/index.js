@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import APP from './App';
+import './index.css';
+import "antd/dist/antd.css";
+import WrappedLayout from "./Layout";
 
 ReactDom.render(
-    <APP />,
+    <WrappedLayout />,
     document.querySelector('#root')
 );
