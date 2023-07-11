@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = (env, argv) => {
     const devMode = argv.mode !== 'production';
@@ -18,6 +19,9 @@ module.exports = (env, argv) => {
             historyApiFallback: true,
         },
         plugins: [
+            new ESLintPlugin({
+                extensions: ['js', 'jsx'], // Your file extensions
+            }),
             new HtmlWebpackPlugin({
                 title: 'React App',
                 template: 'public/index.html'

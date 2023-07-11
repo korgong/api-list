@@ -5,7 +5,7 @@ const APIList = ({ apis }) => (
     <List
         itemLayout="horizontal"
         dataSource={apis}
-        renderItem={item => (
+        renderItem={(item) => (
             <List.Item>
                 <List.Item.Meta
                     title={item.name}

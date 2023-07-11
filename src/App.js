@@ -8,7 +8,7 @@ import HomePage from './pages/HomePage';
 import APIListPage from './pages/APIListPage';
 
 const store = configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
 });
 
 // todo change the directory of HomePage and APIListPage and add contents

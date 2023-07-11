@@ -1,9 +1,9 @@
 import { Layout } from 'antd';
 import React from 'react';
-import CategoryList from "../components/CategoryList";
-import Filter from "../components/Filter";
-import List from "../components/List";
-import Pagination from "../components/Pagination";
+import CategoryList from '../components/CategoryList';
+import Filter from '../components/Filter';
+import List from '../components/List';
+import Pagination from '../components/Pagination';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -11,7 +11,7 @@ const APIListPage = function () {
     return (
         <div>
             <Layout>
-                <Sider theme='light'>
+                <Sider theme="light">
                     <CategoryList />
                 </Sider>
                 <Content>
@@ -22,13 +22,12 @@ const APIListPage = function () {
                         <List />
                     </div>
                     <div>
-                        {/* todo deal with pagination */}
-                        {/*<Pagination />*/}
+                        <Pagination pageSize={5} total={5} />
                     </div>
                 </Content>
             </Layout>
         </div>
     );
-}
+};
 
 export default APIListPage;

@@ -7,10 +7,8 @@ const CategoryList = ({ onSelectCategory }) => (
     <List
         bordered
         dataSource={categories}
-        renderItem={item => (
-            <List.Item onClick={() => onSelectCategory(item)}>
-                {item}
-            </List.Item>
+        renderItem={(item) => (
+            <List.Item onClick={() => onSelectCategory(item)}>{item}</List.Item>
         )}
     />
 );
