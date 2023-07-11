@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from 'antd';
 
-const APIList = ({ dataSource }) => (
+const ListModule = ({ dataSource }) => (
     <List
         itemLayout="horizontal"
         dataSource={dataSource}
@@ -16,4 +16,4 @@ const APIList = ({ dataSource }) => (
     />
 );
 
-export default APIList;
+export default ListModule;

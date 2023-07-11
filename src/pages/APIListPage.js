@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
 import CategoryList from '../components/CategoryList';
 import Filter from '../components/Filter';
-import List from '../components/List';
+import APIList from '../components/List';
 import Pagination from '../components/Pagination';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -33,7 +33,7 @@ function APIListPage () {
                         <Filter />
                     </div>
                     <div>
-                        <List dataSource={apiList} />
+                        <APIList dataSource={apiList} />
                     </div>
                     <div>
                         <Pagination pageSize={5} total={5} />
@@ -42,6 +42,6 @@ function APIListPage () {
             </Layout>
         </div>
     );
-};
+}
 
 export default APIListPage;
