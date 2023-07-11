@@ -1,0 +1,7 @@
+{
+  "apis": [
+    { "id": 1, "name": "API 1", "category": "Payment", "description": "Payment related operations"},
+    { "id": 2, "name": "API 2", "category": "User", "description": "User related operations"},
+    { "id": 3, "name": "API 3", "category": "Order", "description": "Order related operations"}
+  ]
+}
