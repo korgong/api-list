@@ -5,7 +5,7 @@
   "proxy": "http://localhost:3001",
   "license": "MIT",
   "scripts": {
-    "server": "json-server --watch db.json --port 3001",
+    "server": "node server.js",
     "start": "webpack-dev-server --open --hot",
     "build": "webpack --mode production",
     "prettier": "prettier --write \"src/**/*.{js,jsx}\""
