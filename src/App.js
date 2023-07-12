@@ -1,11 +1,12 @@
 // App.js
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers/slice';
-import HomePage from './pages/HomePage';
-import APIListPage from './pages/APIListPage';
+
+const HomePage = lazy(() => import('./pages/HomePage'));
+const APIListPage = lazy(() => import('./pages/APIListPage'));
 
 const store = configureStore({
     reducer: rootReducer,
@@ -16,13 +17,16 @@ const store = configureStore({
 const App = () => (
     <Provider store={store}>
         <Router>
-            <Routes>
-                <Route path="/home" element={<HomePage />} />
-                <Route path="/api-list" element={<APIListPage />} />
-                <Route path="/" element={<APIListPage />} />
-            </Routes>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/api-list" element={<APIListPage />} />
+                    <Route path="/" element={<APIListPage />} />
+                </Routes>
+            </Suspense>
         </Router>
     </Provider>
+
 );
 
 export default App;
