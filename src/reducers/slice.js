@@ -4,14 +4,7 @@ import axios from 'axios';
 // Async action for fetching data
 export const fetchApiList = createAsyncThunk(
     'api/fetchApiList',
-    async (apiCategory, apiQuery, apiCurrentPage) => {
-        console.log(
-            'apiCategory',
-            apiCategory,
-            'apiCurrentPage',
-            apiCurrentPage,
-        );
-        // todo deal with the value of the apiCurrentPage
+    async ({apiCategory, apiQuery, apiCurrentPage}) => {
         const response = await axios.get(
             `http://localhost:3001/list?_page=${apiCurrentPage}&_limit=3`,
         );

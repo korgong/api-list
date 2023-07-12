@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from 'antd';
 
-const categories = ['Payment', 'User', 'Order']; // Assuming these categories
+const categories = ['Rest', 'Odata v2', 'Odata v4'];
 
 const CategoryList = ({ onSelectCategory }) => (
     <List

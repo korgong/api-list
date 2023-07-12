@@ -24,12 +24,7 @@ function APIListPage() {
     }, []);
 
     useEffect(() => {
-        // todo think about the parameter
-        // if (showLoading === false) {
-        //     console.log(apiCategory, apiQuery, apiCurrentPage);
-        // }
-        console.log('apiCurrentPage', apiCurrentPage);
-        dispatch(fetchApiList(apiCategory, apiQuery, apiCurrentPage));
+        dispatch(fetchApiList({apiCategory, apiQuery, apiCurrentPage}));
     }, [dispatch, apiCurrentPage]);
 
     return (

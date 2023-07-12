@@ -11,11 +11,11 @@ ReactDom.render(
 );
 
 // api field is like this below
-let api = {
-    id: 1,
-    name: 'API 1',
-    category: 'Payment',
-    description: 'Payment related operations',
-    createTime: '2023-07-10',
-    owner: 'Kor Gong',
-};
+// let api = {
+//     id: 1,
+//     name: 'API 1',
+//     category: 'Payment',
+//     description: 'Payment related operations',
+//     createTime: '2023-07-10',
+//     owner: 'Kor Gong',
+// };

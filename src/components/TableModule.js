@@ -29,7 +29,6 @@ const columns = [
     },
 ];
 const TableModule = ({ dataSource, pagination = false }) => {
-    console.log('dataSource', dataSource);
     return (
         <Table columns={columns} dataSource={dataSource} pagination={false} />
     );
