@@ -18,6 +18,13 @@ module.exports = (env, argv) => {
         devServer: {
             static: './dist',
             historyApiFallback: true,
+            proxy: {
+                '/api': {
+                    target: 'http://localhost:3001',
+                    secure: false,
+                    changeOrigin: true
+                },
+            },
             client: {
                 overlay: false // This will prevent warnings from appearing as overlays in the browser
             },
