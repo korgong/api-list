@@ -6,10 +6,12 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 
 // Add this before server.use(router)
-server.use(jsonServer.rewriter({
-    '/api/:resource/:id/show': '/:resource/:id',
-    '/api/:resource/page/:page': '/:resource?_page=:page',
-}));
+server.use(
+    jsonServer.rewriter({
+        '/api/:resource/:id/show': '/:resource/:id',
+        '/api/:resource/page/:page': '/:resource?_page=:page',
+    }),
+);
 
 server.use(router);
 

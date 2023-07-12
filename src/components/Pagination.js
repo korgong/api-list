@@ -1,7 +1,12 @@
 import React from 'react';
 import { Pagination } from 'antd';
 
-const PaginationComponent = ({ currentPage, total, pageSize, onChange }) => (
+const PaginationComponent = ({
+    currentPage = 1,
+    total,
+    pageSize,
+    onChange,
+}) => (
     <Pagination
         currentPage={currentPage}
         total={total}

@@ -8,6 +8,7 @@ module.exports = (env, argv) => {
 
     return {
         mode: devMode ? 'development' : 'production',
+        devtool: devMode ? 'source-map' : 'inline-source-map', // Conditional source maps
         entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
@@ -17,6 +18,9 @@ module.exports = (env, argv) => {
         devServer: {
             static: './dist',
             historyApiFallback: true,
+            client: {
+                overlay: false // This will prevent warnings from appearing as overlays in the browser
+            },
         },
         plugins: [
             new ESLintPlugin({
@@ -24,9 +28,9 @@ module.exports = (env, argv) => {
             }),
             new HtmlWebpackPlugin({
                 title: 'React App',
-                template: 'public/index.html'
+                template: 'public/index.html',
             }),
-            new CompressionPlugin()
+            new CompressionPlugin(),
         ],
         module: {
             rules: [
@@ -36,7 +40,10 @@ module.exports = (env, argv) => {
                     use: {
                         loader: 'babel-loader',
                         options: {
-                            presets: ['@babel/preset-env', '@babel/preset-react'],
+                            presets: [
+                                '@babel/preset-env',
+                                '@babel/preset-react',
+                            ],
                         },
                     },
                 },

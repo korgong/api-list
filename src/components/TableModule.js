@@ -16,16 +16,23 @@ const columns = [
         title: 'description',
         dataIndex: 'description',
         key: 'description',
-    },{
+    },
+    {
         title: 'createTime',
         dataIndex: 'createTime',
         key: 'createTime',
-    },{
+    },
+    {
         title: 'owner',
         dataIndex: 'owner',
         key: 'owner',
-    }
+    },
 ];
-const TableModule = ({dataSource, pagination = false}) => <Table columns={columns} dataSource={dataSource} pagination={false} />;
+const TableModule = ({ dataSource, pagination = false }) => {
+    console.log('dataSource', dataSource);
+    return (
+        <Table columns={columns} dataSource={dataSource} pagination={false} />
+    );
+};
 
 export default TableModule;

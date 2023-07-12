@@ -2,14 +2,34 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Async action for fetching data
-export const fetchApiList = createAsyncThunk('api/fetchApiList', async (apiCategory, apiQuery, apiCurrentPage) => {
-    const response = await axios.get(`http://localhost:3001/list?_page=${apiCurrentPage}&_limit=3`);
-    return response.data;
-});
+export const fetchApiList = createAsyncThunk(
+    'api/fetchApiList',
+    async (apiCategory, apiQuery, apiCurrentPage) => {
+        console.log(
+            'apiCategory',
+            apiCategory,
+            'apiCurrentPage',
+            apiCurrentPage,
+        );
+        // todo deal with the value of the apiCurrentPage
+        const response = await axios.get(
+            `http://localhost:3001/list?_page=${apiCurrentPage}&_limit=3`,
+        );
+        return response.data;
+    },
+);
 
 const apiSlice = createSlice({
     name: 'api',
-    initialState: { totalItems: 60, currentPage: 1, apiCategory: 'rest', queryStr: '', list: [], status: 'idle', error: null },
+    initialState: {
+        totalItems: 60,
+        currentPage: 1,
+        apiCategory: 'rest',
+        queryStr: '',
+        list: [],
+        showLoading: false,
+        error: null,
+    },
     reducers: {
         updateCategory: (state, action) => {
             state.apiCategory = action.payload;
@@ -22,25 +42,30 @@ const apiSlice = createSlice({
         },
         updateQueryStr: (state, action) => {
             state.queryStr = action.payload;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchApiList.pending, (state) => {
-                state.status = 'loading';
+                state.showLoading = true;
             })
             .addCase(fetchApiList.fulfilled, (state, action) => {
-                state.status = 'succeeded';
                 // Add any fetched data to the array
-                state.list = state.list.concat(action.payload);
+                state.list = action.payload;
+                state.showLoading = false;
             })
             .addCase(fetchApiList.rejected, (state, action) => {
-                state.status = 'failed';
+                state.showLoading = false;
                 state.error = action.error.message;
             });
     },
 });
 
-export const { updateCurrentPage, updateQueryStr, updateCategory, updateTotalPages } = apiSlice.actions;
+export const {
+    updateCurrentPage,
+    updateQueryStr,
+    updateCategory,
+    updateTotalPages,
+} = apiSlice.actions;
 
 export default apiSlice.reducer;
