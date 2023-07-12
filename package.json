@@ -8,7 +8,9 @@
     "server": "node server.js",
     "start": "webpack-dev-server --open --hot",
     "build": "webpack --mode production",
-    "prettier": "prettier --write \"src/**/*.{js,jsx}\""
+    "prettier": "prettier --write \"src/**/*.{js,jsx}\"",
+    "nginx": "nginx -c /Users/kor/code/api-list/nginx.conf",
+    "nginx:stop": "nginx -s stop"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
