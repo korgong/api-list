@@ -6,7 +6,7 @@ export const fetchApiList = createAsyncThunk(
     'api/fetchApiList',
     async ({apiCategory, apiQuery, apiCurrentPage}) => {
         const response = await axios.get(
-            `http://localhost:3001/list?_page=${apiCurrentPage}&_limit=3`,
+            `http://localhost:3001/api/list?_page=${apiCurrentPage}&_limit=3`,
         );
         return response.data;
     },

@@ -8,6 +8,7 @@ server.use(middlewares);
 // Add this before server.use(router)
 server.use(
     jsonServer.rewriter({
+        '/api/:resource/': '/:resource',
         '/api/:resource/:id/show': '/:resource/:id',
         '/api/:resource/page/:page': '/:resource?_page=:page',
     }),
