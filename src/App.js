@@ -26,7 +26,6 @@ const App = () => (
             </Suspense>
         </Router>
     </Provider>
-
 );
 
 export default App;

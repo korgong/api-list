@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { get } from '../utils/request';
 
 // Async action for fetching data
 export const fetchApiList = createAsyncThunk(
     'api/fetchApiList',
-    async ({apiCategory, apiQuery, apiCurrentPage}) => {
-        const response = await axios.get(
+    async ({ apiCategory, apiQuery, apiCurrentPage }) => {
+        const response = await get(
             `/api/list?_page=${apiCurrentPage}&_limit=3`,
         );
         return response.data;

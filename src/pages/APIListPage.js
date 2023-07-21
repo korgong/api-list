@@ -24,7 +24,7 @@ function APIListPage() {
     }, []);
 
     useEffect(() => {
-        dispatch(fetchApiList({apiCategory, apiQuery, apiCurrentPage}));
+        dispatch(fetchApiList({ apiCategory, apiQuery, apiCurrentPage }));
     }, [dispatch, apiCurrentPage]);
 
     return (
