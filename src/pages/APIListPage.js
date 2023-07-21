@@ -5,7 +5,7 @@ import TableModule from '../components/TableModule';
 import PaginationComponent from '../components/Pagination';
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchApiList, updateCurrentPage } from '../reducers/slice';
+import { fetchApiList, updateCurrentPage } from '../reducers/apiListPageSlice';
 
 const { Header, Footer, Sider, Content } = Layout;
 
