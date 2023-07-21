@@ -1,4 +1,4 @@
-import { Layout } from 'antd';
+import { Layout, Spin } from 'antd';
 import CategoryList from '../components/CategoryList';
 import Filter from '../components/Filter';
 import TableModule from '../components/TableModule';
@@ -12,12 +12,14 @@ const { Header, Footer, Sider, Content } = Layout;
 function APIListPage() {
     const dispatch = useDispatch();
     // Get data from store
-    const apiList = useSelector((state) => state.list);
-    const apiQuery = useSelector((state) => state.queryStr);
-    const apiCurrentPage = useSelector((state) => state.currentPage);
-    const apiCategory = useSelector((state) => state.category);
-    const apiTotalItems = useSelector((state) => state.totalItems);
-    const showLoading = useSelector((state) => state.showLoading);
+    const loading = useSelector((state) => state.loading);
+    const apiListPageData = useSelector((state) => state.apiListPageData);
+    const apiList = apiListPageData.list;
+    const apiQuery = apiListPageData.queryStr;
+    const apiCurrentPage = apiListPageData.currentPage;
+    const apiCategory = apiListPageData.category;
+    const apiTotalItems = apiListPageData.totalItems;
+    const showLoading = apiListPageData.showLoading;
 
     const changePage = useCallback((page, _pageSize) => {
         dispatch(updateCurrentPage(page));
@@ -29,27 +31,29 @@ function APIListPage() {
 
     return (
         <div>
-            <Layout>
-                <Sider theme="light">
-                    <CategoryList />
-                </Sider>
-                <Content>
-                    <div>
-                        <Filter />
-                    </div>
-                    <div>
-                        <TableModule dataSource={apiList} />
-                    </div>
-                    <div>
-                        <PaginationComponent
-                            onChange={changePage}
-                            pageSize={3}
-                            currentPage={apiCurrentPage}
-                            total={apiTotalItems}
-                        />
-                    </div>
-                </Content>
-            </Layout>
+            <Spin spinning={loading}>
+                <Layout>
+                    <Sider theme="light">
+                        <CategoryList />
+                    </Sider>
+                    <Content>
+                        <div>
+                            <Filter />
+                        </div>
+                        <div>
+                            <TableModule dataSource={apiList} />
+                        </div>
+                        <div>
+                            <PaginationComponent
+                                onChange={changePage}
+                                pageSize={3}
+                                currentPage={apiCurrentPage}
+                                total={apiTotalItems}
+                            />
+                        </div>
+                    </Content>
+                </Layout>
+            </Spin>
         </div>
     );
 }

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { store } from '../App';
+import { startLoading, finishLoading } from '../reducers/loadingSlice';
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -14,13 +16,21 @@ function newAbortSignal(timeoutMs = 0) {
 // Create a new Axios instance
 const instance = axios.create();
 
+// Add a request interceptor
+instance.interceptors.request.use((config) => {
+    store.dispatch(startLoading());
+    return config;
+});
+
 // Add a response interceptor
 instance.interceptors.response.use(
     (response) => {
+        store.dispatch(finishLoading());
         // Any status code that lie within the range of 2xx cause this function to trigger
         return response;
     },
     (error) => {
+        store.dispatch(finishLoading());
         if (error.response && error.response.status === 401) {
             // Redirect to login page if response status is 401
             window.location.href = '/login';
