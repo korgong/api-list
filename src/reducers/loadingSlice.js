@@ -6,8 +6,8 @@ export const loadingSlice = createSlice({
     initialState: false,
     reducers: {
         startLoading: () => true,
-        finishLoading: () => false,
-    },
+        finishLoading: () => false
+    }
 });
 
 export const { startLoading, finishLoading } = loadingSlice.actions;

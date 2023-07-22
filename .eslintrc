@@ -23,6 +23,7 @@
   ],
   "rules": {
     "prettier/prettier": "warn",
+    "comma-dangle": "off", // Disable ESLint's trailing comma rule
     "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
     "no-console": "warn",

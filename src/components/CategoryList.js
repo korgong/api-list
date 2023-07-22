@@ -1,8 +1,12 @@
 import React from 'react';
 import { List } from 'antd';
+import PropTypes from 'prop-types';
 
 const categories = ['Rest', 'Odata v2', 'Odata v4'];
 
+CategoryList.propTypes = {
+    onSelectCategory: PropTypes.func
+};
 const CategoryList = ({ onSelectCategory }) => (
     <List
         bordered

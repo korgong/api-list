@@ -6,10 +6,10 @@ export const fetchApiList = createAsyncThunk(
     'api/fetchApiList',
     async ({ apiCategory, apiQuery, apiCurrentPage }) => {
         const response = await get(
-            `/api/list?_page=${apiCurrentPage}&_limit=3`,
+            `/api/list?_page=${apiCurrentPage}&_limit=3`
         );
         return response.data;
-    },
+    }
 );
 
 const apiSlice = createSlice({
@@ -21,7 +21,7 @@ const apiSlice = createSlice({
         queryStr: '',
         list: [],
         showLoading: false,
-        error: null,
+        error: null
     },
     reducers: {
         updateCategory: (state, action) => {
@@ -35,7 +35,7 @@ const apiSlice = createSlice({
         },
         updateQueryStr: (state, action) => {
             state.queryStr = action.payload;
-        },
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -51,14 +51,14 @@ const apiSlice = createSlice({
                 state.showLoading = false;
                 state.error = action.error.message;
             });
-    },
+    }
 });
 
 export const {
     updateCurrentPage,
     updateQueryStr,
     updateCategory,
-    updateTotalPages,
+    updateTotalPages
 } = apiSlice.actions;
 
 export default apiSlice.reducer;

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Form, Input, Button, DatePicker } from 'antd';
 
+FilterForm.propTypes = {
+    onSearch: Function
+};
 const FilterForm = ({ onSearch }) => {
     const [form] = Form.useForm();
 

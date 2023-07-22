@@ -37,7 +37,7 @@ instance.interceptors.response.use(
         }
         // Any status codes that falls outside the range of 2xx cause this function to trigger
         return Promise.reject(error);
-    },
+    }
 );
 
 export const get = (url, options = {}) => {
@@ -47,13 +47,13 @@ export const get = (url, options = {}) => {
 export const post = (url, data, options = {}) => {
     return instance.post(url, data, {
         signal: newAbortSignal(timeout),
-        ...options,
+        ...options
     });
 };
 
 export const remove = (url, options = {}) => {
     return instance.delete(url, {
         signal: newAbortSignal(timeout),
-        ...options,
+        ...options
     });
 };

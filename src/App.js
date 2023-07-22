@@ -12,8 +12,8 @@ const APIListPage = lazy(() => import('./pages/APIListPage'));
 export const store = configureStore({
     reducer: {
         loading: loadingReducer,
-        apiListPageData: apiListPageReducer,
-    },
+        apiListPageData: apiListPageReducer
+    }
 });
 
 // todo change the directory of HomePage and APIListPage and add contents

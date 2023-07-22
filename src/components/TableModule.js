@@ -5,29 +5,33 @@ const columns = [
         title: 'Name',
         dataIndex: 'name',
         key: 'name',
-        render: (text) => <a>{text}</a>,
+        render: (text) => <a>{text}</a>
     },
     {
         title: 'category',
         dataIndex: 'category',
-        key: 'category',
+        key: 'category'
     },
     {
         title: 'description',
         dataIndex: 'description',
-        key: 'description',
+        key: 'description'
     },
     {
         title: 'createTime',
         dataIndex: 'createTime',
-        key: 'createTime',
+        key: 'createTime'
     },
     {
         title: 'owner',
         dataIndex: 'owner',
-        key: 'owner',
-    },
+        key: 'owner'
+    }
 ];
+TableModule.propTypes = {
+    dataSource: Object,
+    pagination: Boolean
+};
 const TableModule = ({ dataSource, pagination = false }) => {
     return (
         <Table columns={columns} dataSource={dataSource} pagination={false} />

@@ -7,7 +7,7 @@ import WrappedLayout from './Layout';
 ReactDom.render(
     <WrappedLayout />,
 
-    document.querySelector('#root'),
+    document.querySelector('#root')
 );
 
 // api field is like this below

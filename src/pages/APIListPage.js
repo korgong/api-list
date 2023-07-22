@@ -21,9 +21,12 @@ function APIListPage() {
     const apiTotalItems = apiListPageData.totalItems;
     const showLoading = apiListPageData.showLoading;
 
-    const changePage = useCallback((page, _pageSize) => {
-        dispatch(updateCurrentPage(page));
-    }, []);
+    const changePage = useCallback(
+        (page, _pageSize) => {
+            dispatch(updateCurrentPage(page));
+        },
+        [dispatch]
+    );
 
     useEffect(() => {
         dispatch(fetchApiList({ apiCategory, apiQuery, apiCurrentPage }));
@@ -38,7 +41,7 @@ function APIListPage() {
                     </Sider>
                     <Content>
                         <div>
-                            <Filter />
+                            <Filter onSearch={() => {}} />
                         </div>
                         <div>
                             <TableModule dataSource={apiList} />
