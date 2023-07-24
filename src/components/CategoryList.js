@@ -4,9 +4,6 @@ import PropTypes from 'prop-types';
 
 const categories = ['Rest', 'Odata v2', 'Odata v4'];
 
-CategoryList.propTypes = {
-    onSelectCategory: PropTypes.func
-};
 const CategoryList = ({ onSelectCategory }) => (
     <List
         bordered
@@ -16,5 +13,9 @@ const CategoryList = ({ onSelectCategory }) => (
         )}
     />
 );
+
+CategoryList.propTypes = {
+    onSelectCategory: PropTypes.func
+};
 
 export default CategoryList;

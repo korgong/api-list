@@ -28,14 +28,16 @@ const columns = [
         key: 'owner'
     }
 ];
-TableModule.propTypes = {
-    dataSource: Object,
-    pagination: Boolean
-};
+
 const TableModule = ({ dataSource, pagination = false }) => {
     return (
         <Table columns={columns} dataSource={dataSource} pagination={false} />
     );
+};
+
+TableModule.propTypes = {
+    dataSource: Object,
+    pagination: Boolean
 };
 
 export default TableModule;

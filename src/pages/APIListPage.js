@@ -30,6 +30,7 @@ function APIListPage() {
 
     useEffect(() => {
         dispatch(fetchApiList({ apiCategory, apiQuery, apiCurrentPage }));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, apiCurrentPage]);
 
     return (
