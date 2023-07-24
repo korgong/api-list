@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+// const CDNAddress = 'http://localhost:3009/dist/';
+const CDNAddress = 'http://localhost:8081/';
+
 module.exports = (env, argv) => {
     const devMode = argv.mode !== 'production';
 
@@ -12,6 +15,7 @@ module.exports = (env, argv) => {
         entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
+            publicPath: devMode ? '/' : CDNAddress,
             filename: '[name].[contenthash].js',
             clean: true,
         },
@@ -62,6 +66,19 @@ module.exports = (env, argv) => {
                     test: /\.less$/,
                     use: ['style-loader', 'css-loader', 'less-loader'],
                 },
+                {
+                    test: /\.(png|jpg|gif)$/,
+                    use: [
+                        {
+                            loader: 'url-loader',
+                            options: {
+                                limit: 8192, // All images under 8kb will be inlined with base64 encoding, larger ones will be handled by file-loader
+                                name: 'img/[name].[hash:7].[ext]', // this will put all your images into a folder named img in the output directory
+                                publicPath: devMode ? '/' : CDNAddress
+                            },
+                        },
+                    ],
+                }
             ],
         },
         resolve: {

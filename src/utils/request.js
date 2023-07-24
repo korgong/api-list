@@ -2,7 +2,8 @@ import axios from 'axios';
 import { store } from '../App';
 import { startLoading, finishLoading } from '../reducers/loadingSlice';
 
-axios.defaults.baseURL = 'http://localhost:8080';
+// axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = location.origin;
 
 const timeout = 5000;
 
