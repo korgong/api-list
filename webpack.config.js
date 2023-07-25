@@ -16,7 +16,8 @@ module.exports = (env, argv) => {
         output: {
             path: path.resolve(__dirname, 'dist'),
             publicPath: devMode ? '/' : CDNAddress,
-            filename: '[name].[contenthash].js',
+            filename: '[name].bundle.[contenthash].js',
+            chunkFilename: '[name].chunk.js',
             clean: true,
         },
         devServer: {
@@ -84,5 +85,10 @@ module.exports = (env, argv) => {
         resolve: {
             extensions: ['.js', '.jsx'],
         },
+        optimization: {
+            splitChunks: {
+                chunks: 'all'
+            },
+        }
     };
 };
