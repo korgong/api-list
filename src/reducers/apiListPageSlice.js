@@ -1,13 +1,11 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { get } from '../utils/request';
+import { getAPIList } from "../model/ListPageAPI";
 
 // Async action for fetching data
 export const fetchApiList = createAsyncThunk(
     'api/fetchApiList',
     async ({ apiCategory, apiQuery, apiCurrentPage }) => {
-        const response = await get(
-            `/api/list?_page=${apiCurrentPage}&_limit=3`
-        );
+        const response = await getAPIList(apiCurrentPage);
         return response.data;
     }
 );
@@ -44,6 +42,7 @@ const apiSlice = createSlice({
             })
             .addCase(fetchApiList.fulfilled, (state, action) => {
                 // Add any fetched data to the array
+                // console.log('fulfilled-----------------', action.payload);
                 state.list = action.payload;
                 state.showLoading = false;
             })

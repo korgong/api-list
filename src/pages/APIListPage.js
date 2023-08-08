@@ -13,7 +13,10 @@ function APIListPage() {
     const dispatch = useDispatch();
     // Get data from store
     const loading = useSelector((state) => state.loading);
-    const apiListPageData = useSelector((state) => state.apiListPageData);
+    const apiListPageData = useSelector((state) => {
+        // console.log('--------------------------------', state);
+        return state.apiListPageData
+    });
     const apiList = apiListPageData.list;
     const apiQuery = apiListPageData.queryStr;
     const apiCurrentPage = apiListPageData.currentPage;
@@ -29,6 +32,7 @@ function APIListPage() {
     );
 
     useEffect(() => {
+        // console.log('useEffect-----------------------------');
         dispatch(fetchApiList({ apiCategory, apiQuery, apiCurrentPage }));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, apiCurrentPage]);
@@ -45,15 +49,15 @@ function APIListPage() {
                             <Filter onSearch={() => {}} />
                         </div>
                         <div>
-                            <TableModule dataSource={apiList} />
+                            {/*<TableModule dataSource={apiList} />*/}
                         </div>
                         <div>
-                            <PaginationComponent
-                                onChange={changePage}
-                                pageSize={3}
-                                currentPage={apiCurrentPage}
-                                total={apiTotalItems}
-                            />
+                            {/*<PaginationComponent*/}
+                            {/*    onChange={changePage}*/}
+                            {/*    pageSize={3}*/}
+                            {/*    currentPage={apiCurrentPage}*/}
+                            {/*    total={apiTotalItems}*/}
+                            {/*/>*/}
                         </div>
                     </Content>
                 </Layout>
