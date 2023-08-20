@@ -3,8 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
+// if your assets is in the other domain
 // const CDNAddress = 'http://localhost:3009/dist/';
-const CDNAddress = 'http://localhost:8081/';
+
+// as we server is http://localhost:8081/, provided by nginx. so the CDNAddress is
+// same for both 'http://localhost:8081/' and '/'
+const CDNAddress = '/';
+// result for 'http://localhost:8081/' and '/'
+// <script defer="defer" src="http://localhost:8081/main.bundle.6dcd44f297e3811f930e.js"></script>
+// <script defer="defer" src="/main.bundle.6dcd44f297e3811f930e.js"></script>
 
 module.exports = (env, argv) => {
     const devMode = argv.mode !== 'production';
@@ -15,6 +22,9 @@ module.exports = (env, argv) => {
         entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
+            // specify the base path for all assets(js/css/img,etc)
+            // if all assets is in the same root directory, you
+            // don't need to set this parameter. as the default is '/'
             publicPath: devMode ? '/' : CDNAddress,
             filename: '[name].bundle.[contenthash].js',
             chunkFilename: '[name].chunk.js',
