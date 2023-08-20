@@ -12,7 +12,7 @@ module.exports = (env, argv) => {
     return {
         mode: devMode ? 'development' : 'production',
         devtool: devMode ? 'source-map' : 'inline-source-map', // Conditional source maps
-        entry: './src/index.js',
+        entry: './src/index.tsx',
         output: {
             path: path.resolve(__dirname, 'dist'),
             publicPath: devMode ? '/' : CDNAddress,
@@ -47,17 +47,20 @@ module.exports = (env, argv) => {
         module: {
             rules: [
                 {
-                    test: /\.m?js$/,
+                    test: /\.(ts|tsx|js|jsx)$/,
                     exclude: /node_modules/,
-                    use: {
-                        loader: 'babel-loader',
-                        options: {
-                            presets: [
-                                '@babel/preset-env',
-                                '@babel/preset-react',
-                            ],
+                    use: [
+                        {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: [
+                                    '@babel/preset-env',
+                                    '@babel/preset-react',
+                                    '@babel/preset-typescript', // Add this preset
+                                ],
+                            },
                         },
-                    },
+                    ],
                 },
                 {
                     test: /\.css$/,
@@ -83,7 +86,7 @@ module.exports = (env, argv) => {
             ],
         },
         resolve: {
-            extensions: ['.js', '.jsx'],
+            extensions: ['.js', '.jsx', '.ts', '.tsx'],
         },
         optimization: {
             splitChunks: {

@@ -21,6 +21,9 @@
     "react-router-dom": "^6.0.2"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.22.5",
+    "@types/react": "^17.0.64",
+    "@types/react-dom": "^17.0.20",
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-react": "^7.16.5",
@@ -43,6 +46,8 @@
     "prettier": "^3.0.0",
     "prop-types": "^15.8.1",
     "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
     "url-loader": "^4.1.1",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",

@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "allowJs": true,
+    // Skips type checking of declaration files (files with the .d.ts extension)
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // Enables a strict type-checking mode in the compiler, which includes
+    // settings like noImplicitAny, noImplicitThis, strictNullChecks, and more.
+    "strict": false,
+    "sourceMap": true,
+    // or emitDeclarationOnly: true
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "forceConsistentCasingInFileNames": true,
+    // Reports an error if a switch statement falls through
+    // from one case to another without a break or return statement.
+    "noFallthroughCasesInSwitch": true,
+    // Here, it's set to "esnext", which means it will use the latest ECMAScript module syntax.
+    "module": "esnext",
+    "moduleResolution": "node",
+    // Allows the importing of JSON modules.
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    // use the React JSX factory.
+    "jsx": "react-jsx",
+    "noImplicitAny": false,
+    // it's set to ".", which means the base URL is the same directory
+    // as the tsconfig.json file.
+    "baseUrl": "."
+  },
+  "include": ["src"]
+}
