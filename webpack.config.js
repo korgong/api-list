@@ -32,7 +32,7 @@ module.exports = (env, argv) => {
 
     return {
         mode: devMode ? 'development' : 'production',
-        devtool: devMode ? 'source-map' : 'inline-source-map', // Conditional source maps
+        devtool: devMode ? 'inline-source-map' : 'source-map', // source-map: 独立打包source map，和js源码分卡，并且允许异步加载
         entry: './src/index.js',
         output: {
             path: path.resolve(__dirname, 'dist'),
