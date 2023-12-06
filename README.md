@@ -36,6 +36,16 @@ eslint-config-prettier: This package turns off all ESLint rules that are unneces
 eslint-plugin-prettier: This package allows running Prettier as an ESLint rule and reporting differences as individual ESLint issues. It's used to enforce consistent Prettier formatting across your codebase. If you're using this plugin, your code will be formatted using Prettier when you save your file (assuming your editor is set up to do so), but if any Prettier formatting rules are not met, ESLint will highlight those issues.
 eslint-plugin-react-hooks: This package provides ESLint rules for React Hooks. It enforces the Rules of Hooks – the rules that must be followed when using Hooks in React. The two main rules it enforces are "Only Call Hooks at the Top Level" (ensures hooks are not called inside loops, conditions, or nested functions) and "Only Call Hooks from React Functions" (ensures hooks are only called inside React functional components or custom hooks).
 
+CDN:
+这个版本的非html资源都放在cdn中。output.path只影响webpack的编译输出目录。通常情况下，我们使用这个目录作为服务的根目录。那么output.publicPath就不用配置了。这个值默认就是'/'.
+比如我们output.path目录下面有个main.js.在html中如果使用这个main.js，webpack会编译src的值为'/main.js'.但是你如果使用其他地址，比如这里的'http://localhost:3002/'。那么编译
+后的代码中src的值为'http://localhost:3002/main.js'.
+
+然后在说说这个版本怎么启动的。
+1 使用npm run build编译输出目录。
+2 然后把这个目录上传到cdn上。我们在dist目录执行anywhere -p 3002来模拟cdn环境。
+3 使用nginx托管html。执行npm run nginx即可。
+
 
 
 
