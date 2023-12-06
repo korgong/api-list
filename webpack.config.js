@@ -8,7 +8,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 
 // as we server is http://localhost:8081/, provided by nginx. so the CDNAddress is
 // same for both 'http://localhost:8081/' and '/'
-const CDNAddress = '/';
+const CDNAddress = '/app/';
 // result for 'http://localhost:8081/' and '/'
 // <script defer="defer" src="http://localhost:8081/main.bundle.6dcd44f297e3811f930e.js"></script>
 // <script defer="defer" src="/main.bundle.6dcd44f297e3811f930e.js"></script>

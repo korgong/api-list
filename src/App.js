@@ -21,7 +21,7 @@ export const store = configureStore({
 const App = () => {
     return (
         <Provider store={store}>
-            <Router>
+            <Router basename={'/app'}>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
                         <Route path="/home" element={<HomePage />} />
