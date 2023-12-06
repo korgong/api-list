@@ -1,5 +1,6 @@
 import React from 'react';
 import { Pagination } from 'antd';
+import PropTypes from 'prop-types';
 
 const PaginationComponent = ({
     currentPage = 1,
@@ -16,10 +17,10 @@ const PaginationComponent = ({
 );
 
 PaginationComponent.propTypes = {
-    currentPage: Number,
-    total: Number,
-    pageSize: Number,
-    onChange: Function
+    currentPage: PropTypes.number,
+    total: PropTypes.number,
+    pageSize: PropTypes.number,
+    onChange: PropTypes.func
 };
 
 export default PaginationComponent;

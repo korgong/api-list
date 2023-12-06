@@ -1,5 +1,7 @@
 import { Space, Table, Tag } from 'antd';
 import React from 'react';
+import PropTypes from 'prop-types';
+
 const columns = [
     {
         title: 'Name',
@@ -31,13 +33,18 @@ const columns = [
 
 const TableModule = ({ dataSource, pagination = false }) => {
     return (
-        <Table columns={columns} dataSource={dataSource} pagination={false} />
+        <Table
+            rowKey={'name'}
+            columns={columns}
+            dataSource={dataSource}
+            pagination={false}
+        />
     );
 };
 
 TableModule.propTypes = {
-    dataSource: Object,
-    pagination: Boolean
+    dataSource: PropTypes.array,
+    pagination: PropTypes.bool
 };
 
 export default TableModule;
