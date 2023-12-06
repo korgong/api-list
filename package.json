@@ -8,7 +8,7 @@
     "start": "webpack-dev-server --open --hot",
     "build": "webpack --mode production",
     "prettier": "prettier --write \"src/**/*.{js,jsx}\" \"webpack.config.js\"",
-    "nginx": "nginx -c /Users/kor/code/api-list/nginx.conf",
+    "nginx": "nginx -c /Users/kgong/code/api-list/nginx.conf",
     "nginx:stop": "nginx -s stop"
   },
   "dependencies": {
